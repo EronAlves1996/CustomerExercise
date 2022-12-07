@@ -1,5 +1,7 @@
 package io.eronalves.customer;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -37,6 +39,12 @@ class CustomerApplicationTests {
 		c.setEmail("newEmail@email.com");
 		repository.save(c);
 		System.out.println(repository.findById(1).get());
+	}
+
+	@Test
+	void testDelete() {
+		repository.deleteById(1);
+		assertTrue(repository.findById(1).isEmpty());
 	}
 
 }
