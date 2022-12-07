@@ -31,4 +31,12 @@ class CustomerApplicationTests {
 			System.out.println(customer.get());
 	}
 
+	@Test
+	void testUpdate() {
+		Customer c = repository.findById(1).get();
+		c.setEmail("newEmail@email.com");
+		repository.save(c);
+		System.out.println(repository.findById(1).get());
+	}
+
 }
