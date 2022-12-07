@@ -1,5 +1,7 @@
 package io.eronalves.customer;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +22,13 @@ class CustomerApplicationTests {
 		customer.setName("José");
 		customer.setEmail("jose@jose.com");
 		repository.save(customer);
+	}
+
+	@Test
+	void testRead() {
+		Optional<Customer> customer = repository.findById(1);
+		if (customer.isPresent())
+			System.out.println(customer.get());
 	}
 
 }
